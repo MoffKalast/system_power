@@ -1,0 +1,5 @@
+<launch>
+
+    <node name="$(anon system_power)" pkg="system_power" type="power.py" output="screen" />
+
+</launch>
