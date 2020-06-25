@@ -15,11 +15,10 @@ class SystemPower:
 		self.cmd = rospy.Subscriber('/system_power', String, self.command)
 
 	def command(self, msg):
+		rospy.sleep(0.5) # wait for all instances of system_power on network to receive the message
 		if msg.data == "poweroff":
-			rospy.sleep(3) # wait for all instances of system_power on network to receive the message
 			os.system('sudo systemctl poweroff')
 		elif msg.data == "reboot":
-			rospy.sleep(3)
 			os.system('sudo systemctl reboot')
 
 try:
